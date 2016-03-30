@@ -6,11 +6,13 @@
 #define CPP_SSDP_UDP_LISTENER_H
 
 #include <boost/asio.hpp>
+#include "parser.h"
 
 class udp_listener {
 public:
     udp_listener(boost::asio::io_service& io, const boost::asio::ip::address listen_addr,
-                 const boost::asio::ip::address multicast_addr) ;
+                 const boost::asio::ip::address multicast_addr,
+                 std::shared_ptr<parser> parser);
     void handle_receive(const boost::system::error_code& error, const size_t bytes_recived);
 private:
     const int port_ = 1900;
@@ -18,6 +20,7 @@ private:
     boost::asio::ip::udp::endpoint sender_endpoint_;
     const static int MAX_DATA_LEN = 1024;
     char data_[MAX_DATA_LEN];
+    std::shared_ptr<parser> parser_;
 };
 
 

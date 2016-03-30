@@ -8,10 +8,9 @@
 client::client() {
     listen_addr_ = boost::asio::ip::address::from_string("0.0.0.0");
     multicast_addr_ = boost::asio::ip::address::from_string("239.255.255.250");
-    if (udp_listner_ != nullptr) {
-        std::cout << "This should never happen what did you do?" << std::endl;
-    } else {
-        udp_listner_ = std::unique_ptr<udp_listener>(new udp_listener(io_service_,listen_addr_,multicast_addr_));
-    }
+    parser_ = std::make_shared<parser>();
+    std::cout << "parser use count: " << parser_.use_count() << std::endl;
+    udp_listner_ = std::make_unique<udp_listener>(io_service_,listen_addr_, multicast_addr_, parser_);
+    std::cout << "parser use count: " << parser_.use_count() << std::endl;
     io_service_.run();
 }

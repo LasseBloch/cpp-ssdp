@@ -2,10 +2,12 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/lib/client.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/client.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/udp_listener.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/parser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/client.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/parser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/udp_listener.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/client.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>

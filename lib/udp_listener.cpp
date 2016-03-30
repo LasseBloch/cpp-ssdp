@@ -7,8 +7,10 @@
 #include <iostream>
 
 udp_listener::udp_listener(boost::asio::io_service &io, const boost::asio::ip::address listen_addr,
-                           const boost::asio::ip::address multicast_addr) : socket_(io) {
+                           const boost::asio::ip::address multicast_addr,
+                           std::shared_ptr<parser> parser) : socket_(io) {
 
+    parser_ = parser;
     boost::asio::ip::udp::endpoint endpoint(listen_addr, port_);
     socket_.open(endpoint.protocol());
     socket_.set_option(boost::asio::ip::udp::socket::reuse_address(true));
