@@ -30,8 +30,9 @@ udp_listener::udp_listener(boost::asio::io_service &io, const boost::asio::ip::a
 
 void udp_listener::handle_receive(const boost::system::error_code &error, const size_t bytes_recived) {
     if (!error) {
-        std::cout.write(data_, bytes_recived);
-        std::cout << std::endl;
+        // Make a unique_ptr properly overkill, this will do for now
+        // we can fire and forget about the string parsed to the parser
+        parser_.get()->parse(std::make_unique<std::string>(data_, bytes_recived));
 
         socket_.async_receive_from(boost::asio::buffer(data_, MAX_DATA_LEN), sender_endpoint_,
                               boost::bind(&udp_listener::handle_receive,

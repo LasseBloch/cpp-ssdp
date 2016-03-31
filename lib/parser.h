@@ -9,6 +9,7 @@
 #include <memory>
 
 class parser {
+public:
     void parse(std::unique_ptr<std::string> raw_msg);
 };
 

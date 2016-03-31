@@ -7,6 +7,6 @@
 
 
 void parser::parse(std::unique_ptr<std::string> raw_msg) {
-    std::cout << raw_msg.get() << std::endl;
+    std::cout << *raw_msg.get() << std::endl;
 }
 
